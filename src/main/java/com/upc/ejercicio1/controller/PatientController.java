@@ -22,7 +22,10 @@ public class PatientController {
     @Autowired
     public PatientBusiness business;
     Logger logger = LoggerFactory.getLogger(PatientController.class);
-
+    @PostMapping("/message")
+    public String Mensaje(){
+        return "si funciona :D";
+    }
     @GetMapping("/patients")
     public ResponseEntity<List<PatientDTO>> listado(){
         List<Patient> list = business.list();
