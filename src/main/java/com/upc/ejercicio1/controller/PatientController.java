@@ -22,6 +22,7 @@ public class PatientController {
     @Autowired
     public PatientBusiness business;
     Logger logger = LoggerFactory.getLogger(PatientController.class);
+
     @PostMapping("/message")
     public String Mensaje(){
         return "si funciona :D";
