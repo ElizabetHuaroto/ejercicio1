@@ -40,7 +40,7 @@ public class PatientController {
         return new ResponseEntity<List<PatientDTO>>(listDto,HttpStatus.OK);
     }
 
-    @PostMapping("/patients")
+    @PostMapping("/patient")
     public ResponseEntity<PatientDTO> insertar(@RequestBody PatientDTO patientDTO) {
         Patient patient = convertToEntity(patientDTO);
         try {
