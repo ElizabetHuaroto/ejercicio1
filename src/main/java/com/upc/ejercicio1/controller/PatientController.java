@@ -41,14 +41,15 @@ public class PatientController {
     }
 
     @PostMapping("/patients")
-    public ResponseEntity<PatientDTO> crearAutor(@RequestBody PatientDTO patientDTO) {
-        Patient patient;
+    public ResponseEntity<PatientDTO> insertar(@RequestBody PatientDTO patientDTO) {
+        Patient patient = convertToEntity(patientDTO);
         try {
             logger.debug("Creando objeto");
-            patient = convertToEntity(patientDTO);
-            patientDTO = convertToDto(business.register(patient));
+            patient= business.register(patient);
+            patientDTO= convertToDto(patient);
+
         }catch(Exception e){
-            logger.error("Error de creación",e);
+            e.printStackTrace();
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo crear, sorry", e);
         }
         return new ResponseEntity<PatientDTO>(patientDTO, HttpStatus.OK);
