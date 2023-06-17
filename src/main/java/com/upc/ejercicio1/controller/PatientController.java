@@ -63,7 +63,7 @@ public class PatientController {
         return new ResponseEntity<PatientDTO>(patientDTO, HttpStatus.OK);
     }
 
-    @DeleteMapping("/patients/{id}")
+    @DeleteMapping("/patient/{id}")
     public ResponseEntity<PatientDTO> borrarAutor(@PathVariable(value = "codigo") Long codigo){
         Patient  patient;
         PatientDTO patientDTO;
