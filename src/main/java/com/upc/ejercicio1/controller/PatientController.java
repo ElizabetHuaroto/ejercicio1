@@ -33,14 +33,9 @@ public class PatientController {
         return new ResponseEntity<List<PatientDTO>>(listDto, HttpStatus.OK);
     }
 
-    @GetMapping("/patients/{nombre}")
-    public ResponseEntity<List<PatientDTO>>  obtenerName(@PathVariable(value = "nombre") String nombre){
-        List<Patient> list = business.getReportbyDescription(nombre);
-        List<PatientDTO> listDto = convertToLisDto(list);
-        return new ResponseEntity<List<PatientDTO>>(listDto,HttpStatus.OK);
-    }
 
-    @PostMapping("/patient")
+
+    @PostMapping("/patiente")
     public ResponseEntity<PatientDTO> insertar(@RequestBody PatientDTO patientDTO) {
         Patient patient = convertToEntity(patientDTO);
         try {
@@ -55,7 +50,7 @@ public class PatientController {
         return new ResponseEntity<PatientDTO>(patientDTO, HttpStatus.OK);
     }
 
-    @DeleteMapping("/patients/{codigo}")
+    @DeleteMapping("/patients/{id}")
     public ResponseEntity<PatientDTO> borrarAutor(@PathVariable(value = "codigo") Long codigo){
         Patient  patient;
         PatientDTO patientDTO;
