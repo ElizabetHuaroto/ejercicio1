@@ -70,20 +70,7 @@ public class PatientController {
         }
     }
 
-    @GetMapping("/patients/{codigo}")
-    public ResponseEntity<PatientDTO> obtenerEntidad(@PathVariable(value = "codigo") Long codigo){
-        Patient patient;
-        PatientDTO patientDTO;
-        try {
-            logger.debug("Buscando entidad");
-            patient = business.findfunction(codigo);
-            patientDTO = convertToDto(patient);
-        }catch(Exception e){
-            logger.error("Error de Obtener Entidad");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Mi mensaje");
-        }
-        return new ResponseEntity<PatientDTO>(patientDTO, HttpStatus.OK);
-    }
+
     private PatientDTO convertToDto(Patient patient) {
         ModelMapper modelMapper = new ModelMapper();
         PatientDTO patientDTO = modelMapper.map(patient, PatientDTO.class);
